@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Jedi Calculator - Powered by the Force</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <div class="container">
+        <div class="title">Jedi Calculator<br>Powered by the Force</div>
+        <div class="calculator">
+            <div class="display-container">
+                <input type="text" id="display" readonly placeholder="Enter your command...">
+            </div>
+            <div class="buttons">
+                <!-- Linha 1: Básicas -->
+                <button class="number" onclick="appendToDisplay('7')">7</button>
+                <button class="number" onclick="appendToDisplay('8')">8</button>
+                <button class="number" onclick="appendToDisplay('9')">9</button>
+                <button class="operator" onclick="appendToDisplay('/')">Divide</button>
+                <!-- Linha 2 -->
+                <button class="number" onclick="appendToDisplay('4')">4</button>
+                <button class="number" onclick="appendToDisplay('5')">5</button>
+                <button class="number" onclick="appendToDisplay('6')">6</button>
+                <button class="operator" onclick="appendToDisplay('*')">Multiply</button>
+                <!-- Linha 3 -->
+                <button class="number" onclick="appendToDisplay('1')">1</button>
+                <button class="number" onclick="appendToDisplay('2')">2</button>
+                <button class="number" onclick="appendToDisplay('3')">3</button>
+                <button class="operator" onclick="appendToDisplay('-')">Subtract</button>
+                <!-- Linha 4 -->
+                <button class="number" onclick="appendToDisplay('0')">0</button>
+                <button class="number" onclick="appendToDisplay('.')">.</button>
+                <button class="operator" onclick="calculate()">=</button>
+                <button class="operator" onclick="appendToDisplay('+')">Force Add</button>
+                <!-- Linha 5: Científicas -->
+                <button class="function" onclick="appendFunction('Math.sin(')">Sin</button>
+                <button class="function" onclick="appendFunction('Math.cos(')">Cos</button>
+                <button class="function" onclick="appendFunction('Math.tan(')">Tan</button>
+                <button class="function" onclick="appendFunction('Math.log(')">Log</button>
+                <button class="function" onclick="appendFunction('Math.sqrt(')">Sqrt</button>
+                <button class="function" onclick="appendFunction('Math.pow(')">Pow</button>
+                <button class="convert" onclick="convertUnits()">Convert (Parsecs)</button>
+                <button class="control" onclick="clearDisplay()">Clear</button>
+                <button class="control" onclick="backspace()">Back</button>
+                <button class="control" onclick="toggleMode()">Toggle Mode</button>
+            </div>
+        </div>
+        <div class="history">
+            <h3>Calculation History</h3>
+            <ul id="historyList"></ul>
+        </div>
+    </div>
+    <script src="script.js"></script>
+</body>
+</html>

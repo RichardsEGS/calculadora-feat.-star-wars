@@ -1,0 +1,81 @@
+let display = document.getElementById('display');
+let historyList = document.getElementById('historyList');
+let expression = '';
+let history = [];
+let advancedMode = false;
+
+function appendToDisplay(value) {
+    expression += value;
+    display.value = expression;
+}
+
+function appendFunction(func) {
+    expression += func;
+    display.value = expression;
+}
+
+function calculate() {
+    try {
+        let result = eval(expression);
+        display.value = result;
+        addToHistory(expression + ' = ' + result);
+        expression = result.toString();
+    } catch (error) {
+        if (expression.includes('/0')) {
+            alert('Division by zero! (The Empire forbids it)');
+        } else {
+            alert('Invalid input! (The Dark Side tempts you)');
+        }
+        clearDisplay();
+    }
+}
+
+function clearDisplay() {
+    expression = '';
+    display.value = '';
+}
+
+function backspace() {
+    expression = expression.slice(0, -1);
+    display.value = expression;
+}
+
+function addToHistory(entry) {
+    history.push(entry);
+    if (history.length > 10) history.shift(); // Limita a 10 entradas
+    updateHistoryDisplay();
+}
+
+function updateHistoryDisplay() {
+    historyList.innerHTML = '';
+    history.forEach(item => {
+        let li = document.createElement('li');
+        li.textContent = item;
+        historyList.appendChild(li);
+    });
+}
+
+function convertUnits() {
+    // Simples conversão: Parsecs para anos-luz (1 pc ≈ 3.26 ly)
+    let value = parseFloat(expression);
+    if (!isNaN(value)) {
+        let result = value * 3.26;
+        display.value = result + ' light-years';
+        addToHistory(expression + ' parsecs = ' + result + ' ly');
+        expression = result.toString();
+    } else {
+        alert('Enter a number first! (Use the Force wisely)');
+    }
+}
+
+function toggleMode() {
+    advancedMode = !advancedMode;
+    let advancedButtons = document.querySelectorAll('.advanced');
+    advancedButtons.forEach(btn => {
+        btn.style.display = advancedMode ? 'block' : 'none';
+    });
+    alert(advancedMode ? 'Advanced Mode Activated! (Jedi powers unlocked)' : 'Basic Mode (Apprentice level)');
+}
+
+// Inicializa no modo básico
+toggleMode();

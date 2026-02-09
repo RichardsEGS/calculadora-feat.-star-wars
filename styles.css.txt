@@ -1,0 +1,150 @@
+body {
+    background: linear-gradient(45deg, #000000, #001122); /* Gradiente escuro para espaço */
+    color: #556B2F; /* Verde militar para texto futurístico */
+    font-family: 'Courier New', monospace;
+    margin: 0;
+    padding: 0;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+    overflow: hidden;
+    position: relative;
+}
+
+body::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-image: radial-gradient(circle, rgba(255, 255, 255, 0.1) 1px, transparent 1px);
+    background-size: 50px 50px;
+    animation: twinkling 3s infinite;
+    z-index: -1;
+}
+
+@keyframes twinkling {
+    0%, 100% { opacity: 0.5; }
+    50% { opacity: 1; }
+}
+
+.container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    max-width: 600px;
+    width: 100%;
+}
+
+.title {
+    font-size: 24px;
+    text-align: center;
+    margin-bottom: 20px;
+    text-shadow: 0 0 10px #556B2F; /* Verde militar no glow */
+    animation: glow 2s infinite alternate;
+}
+
+@keyframes glow {
+    from { text-shadow: 0 0 10px #556B2F; }
+    to { text-shadow: 0 0 20px #556B2F, 0 0 30px #556B2F; }
+}
+
+.calculator {
+    background: rgba(0, 0, 0, 0.8); /* Transparente para efeito holográfico */
+    border: 2px solid #556B2F; /* Verde militar na borda */
+    border-radius: 15px;
+    padding: 20px;
+    box-shadow: 0 0 20px #556B2F, inset 0 0 20px rgba(85, 107, 47, 0.1); /* Verde militar no shadow */
+    backdrop-filter: blur(10px); /* Efeito de vidro */
+    width: 100%;
+    max-width: 400px;
+}
+
+.display-container {
+    margin-bottom: 20px;
+}
+
+#display {
+    width: 100%;
+    height: 60px;
+    font-size: 28px;
+    text-align: right;
+    background: rgba(0, 0, 0, 0.5);
+    color: #556B2F; /* Verde militar no texto do display */
+    border: 1px solid #556B2F; /* Verde militar na borda */
+    padding: 10px;
+    border-radius: 10px;
+    box-shadow: inset 0 0 10px #556B2F; /* Verde militar no inset */
+    outline: none;
+}
+
+.buttons {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 10px;
+}
+
+button {
+    height: 50px;
+    font-size: 16px;
+    border: 1px solid #556B2F; /* Verde militar na borda base */
+    border-radius: 10px;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    box-shadow: 0 0 5px #556B2F; /* Verde militar no shadow base */
+}
+
+button:hover {
+    transform: scale(1.05);
+}
+
+/* Botões numéricos: Verde militar */
+.number {
+    background: linear-gradient(45deg, #4B5320, #556B2F); /* Verde militar */
+    color: #ffffff; /* Texto branco */
+}
+
+.number:hover {
+    box-shadow: 0 0 15px #556B2F, 0 0 25px #556B2F; /* Verde militar no hover */
+}
+
+/* Demais teclas: Bege */
+.operator, .function, .control, .convert {
+    background: linear-gradient(45deg, #F5F5DC, #D2B48C); /* Bege */
+    color: #333; /* Texto escuro para contraste */
+}
+
+.operator:hover, .function:hover, .control:hover, .convert:hover {
+    box-shadow: 0 0 15px #D2B48C, 0 0 25px #D2B48C; /* Bege no hover */
+}
+
+.history {
+    margin-top: 20px;
+    background: rgba(0, 0, 0, 0.8);
+    border: 1px solid #556B2F; /* Verde militar na borda */
+    border-radius: 10px;
+    padding: 10px;
+    width: 100%;
+    max-width: 400px;
+    box-shadow: 0 0 10px #556B2F; /* Verde militar no shadow */
+}
+
+.history h3 {
+    margin: 0 0 10px 0;
+    text-align: center;
+    color: #556B2F; /* Verde militar no título */
+}
+
+#historyList {
+    list-style: none;
+    padding: 0;
+    max-height: 150px;
+    overflow-y: auto;
+}
+
+#historyList li {
+    padding: 5px;
+    border-bottom: 1px solid #556B2F; /* Verde militar na linha */
+}
